@@ -33,7 +33,6 @@ axios.get(endPoint)
 
 function printPhotoCard(photo){
   const {title, url} = photo;
-
   cardsContainer.innerHTML += `      
   <div class="col d-flex justify-content-center">
         <div class="photocard debug">
