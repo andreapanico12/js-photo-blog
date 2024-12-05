@@ -16,6 +16,9 @@
   <!-- style -->
    <link rel="stylesheet" href="assets/style/style.css">
 
+   <!-- axios -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js" integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
 <header>
@@ -25,12 +28,12 @@
 
 <main>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <div id="cards-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
       <div class="col d-flex justify-content-center">
-        <div class="photocard debug">
+        <div class="photocard">
           <div class="pin-image"><img src="assets/img/pin.svg" alt="pin"></div>
-          <div class="image-container debug"><img src="assets/img/placeholder-image.png" alt="placeholder"></div>
+          <div class="image-container"><img src="assets/img/placeholder-image.png" alt="placeholder"></div>
           <p class="text-container">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </div>
