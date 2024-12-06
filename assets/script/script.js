@@ -8,6 +8,11 @@ const endPoint = "https://jsonplaceholder.typicode.com/photos?_limit=6";
 // richiamo nello script degli elementi in pagina necessari.
 
 const cardsContainer = document.getElementById('cards-container');
+const overlay = document.getElementById("overlay");
+const overlayPhoto = document.getElementById("overlay-photo");
+const overlayButton = document.getElementById("btn-close");
+
+
 
 
 cardsContainer.innerHTML ='';
@@ -18,6 +23,19 @@ cardsContainer.innerHTML ='';
 axios.get(endPoint)
   .then(response =>{
     response.data.forEach(photo => printPhotoCard(photo))
+
+
+ 
+
+    const clickablePhotos = document.querySelectorAll(".clickable-photo");
+
+    clickablePhotos.forEach(clickablePhoto =>{
+      clickablePhoto.addEventListener('click', () =>{
+        overlay.classList.remove('d-none');
+        
+      })
+    })
+  
   })
 
 
@@ -29,15 +47,21 @@ axios.get(endPoint)
 
   })
 
-// creo una funzione che permetta di destrutturare un oggetto nelle sue singole proprietà le quali potranno essere utilizzate per compilare il formato della card precedentemente creato in html. Nello specifico andremo ad utilizzare le proprietà definite come title ed url.
+
+
+  overlayButton.addEventListener('click',()=>{
+    overlay.classList.add('d-none');
+  })
+
+// creo una funzione che permetta di destrutturare un oggetto nelle sue singole proprietà le quali potranno essere utilizzate per compilare il formato della card precedentemente creato in html. Nello specifico andremo ad utilizzare le proprietà definite come title url e thumbnailUrl.
 
 function printPhotoCard(photo){
-  const {title, url} = photo;
+  const {title, url, thumbnailUrl} = photo;
   cardsContainer.innerHTML += `      
   <div class="col d-flex justify-content-center">
         <div class="photocard debug">
           <div class="pin-image"><img src="assets/img/pin.svg" alt="pin"></div>
-          <div class="image-container debug"><img src=${url} alt="placeholder"></div>
+          <div class="image-container"><img class="clickable-photo" src=${url} alt=${thumbnailUrl}></div>
           <p class="text-container">${title}</p>
         </div>
       </div>`
