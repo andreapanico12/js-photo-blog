@@ -35,6 +35,12 @@ axios.get(endPoint)
         
       })
     })
+
+    overlay.addEventListener('click', (event)=>{
+      if (event.target === overlay){
+        overlay.classList.add("d-none");
+      }
+    })
   
   })
 
@@ -56,12 +62,12 @@ axios.get(endPoint)
 // creo una funzione che permetta di destrutturare un oggetto nelle sue singole proprietà le quali potranno essere utilizzate per compilare il formato della card precedentemente creato in html. Nello specifico andremo ad utilizzare le proprietà definite come title url e thumbnailUrl.
 
 function printPhotoCard(photo){
-  const {title, url, thumbnailUrl} = photo;
+  const {title, url, id} = photo;
   cardsContainer.innerHTML += `      
   <div class="col d-flex justify-content-center">
         <div class="photocard">
           <div class="pin-image"><img src="assets/img/pin.svg" alt="pin"></div>
-          <div class="image-container"><img class="photo" src=${url} alt=${thumbnailUrl}></div>
+          <div class="image-container"><img class="photo" src=${url} alt="Photo ID:${id}"></div>
           <p class="text-container">${title}</p>
         </div>
       </div>`
