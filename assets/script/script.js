@@ -24,14 +24,14 @@ axios.get(endPoint)
   .then(response =>{
     response.data.forEach(photo => printPhotoCard(photo))
 
+    //clickablePhotos va definita all'interno del .then altrimenti a causa dell'asincronicità della risposta della chiamata all'API la nodelist del querySelectorAll non risulterà popolata dalle immagini ricevute.
 
- 
-
-    const clickablePhotos = document.querySelectorAll(".clickable-photo");
+    const clickablePhotos = document.querySelectorAll(".photocard");
 
     clickablePhotos.forEach(clickablePhoto =>{
       clickablePhoto.addEventListener('click', () =>{
         overlay.classList.remove('d-none');
+        overlayPhoto.src = document.querySelector(".photo").src
         
       })
     })
@@ -59,9 +59,9 @@ function printPhotoCard(photo){
   const {title, url, thumbnailUrl} = photo;
   cardsContainer.innerHTML += `      
   <div class="col d-flex justify-content-center">
-        <div class="photocard debug">
+        <div class="photocard">
           <div class="pin-image"><img src="assets/img/pin.svg" alt="pin"></div>
-          <div class="image-container"><img class="clickable-photo" src=${url} alt=${thumbnailUrl}></div>
+          <div class="image-container"><img class="photo" src=${url} alt=${thumbnailUrl}></div>
           <p class="text-container">${title}</p>
         </div>
       </div>`
