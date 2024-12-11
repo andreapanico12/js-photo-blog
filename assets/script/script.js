@@ -31,7 +31,8 @@ axios.get(endPoint)
     clickablePhotos.forEach(clickablePhoto =>{
       clickablePhoto.addEventListener('click', () =>{
         overlay.classList.remove('d-none');
-        overlayPhoto.src = document.querySelector(".photo").src
+        const photo = clickablePhoto.querySelector(".photo");
+        overlayPhoto.src = photo.src
         
       })
     })
